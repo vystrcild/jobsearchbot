@@ -27,7 +27,7 @@ webhook = os.environ["DISCORD_URL"]
 
 class Jobs(Base):
     """
-    DB table Jobs
+    DB table - Jobs
     """
     __tablename__ = "jobs"
     id = Column("id", Integer, primary_key=True, autoincrement=True)
@@ -94,6 +94,7 @@ class Jobscz(JobPortal):
 
 class Startupjobs(JobPortal):
     def __init__(self):
+        # Not actual url of positions filter but XHR
         url = "https://www.startupjobs.cz/api/nabidky?location[]=ChIJEVE_wDqUEkcRsLEUZg-vAAQ&technological-tag[]" \
               "=908&page=1"
         r = requests.get(url)
@@ -275,6 +276,7 @@ def insert_all_db():
 def post_discord():
     query = session.query(Jobs).filter(Jobs.posted == "not-posted").all()
     for q in query:
+
         # Format discord message
         message = {}
         message["embeds"] = [
@@ -299,10 +301,11 @@ def post_discord():
                 }
             }
         ]
+
         # Send to discord
         requests.post(webhook, json=message)
 
-        # In case of testing let script sleep for 2 seconds because of Discord limit (30 messages/minute)
+        # For testing let script sleep for 2 seconds because of Discord limit (30 messages/minute)
         time.sleep(2)
 
         # Label position so it's not posted multiple times
