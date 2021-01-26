@@ -1,7 +1,7 @@
 # Job Search Bot
-___
 
-Simple web **scraper for few IT job portals** in the Czech Republic. Using Discord webhook to get notified about job offers automatically.
+
+Simple web **scraper for few IT job portals** in the Czech Republic. Using **Discord webhook** to get notified about job offers automatically.
 
 ## Usage 
 <img align="right" src="https://github.com/vystrcild/jobsearchbot/blob/main/static/jobbot.png?raw=true">
