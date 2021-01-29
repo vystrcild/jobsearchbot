@@ -10,4 +10,4 @@ Simple web **scraper for few IT job portals** in the Czech Republic. Using **Dis
 - Create and use your [Discord webhook](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
 - Run **jobsearchbot.py** 
 
-I'm using SQLAlchemy to save job offers inside SQLite database just in case for further research of the companies.
+Using BeautifulSoup4 for scraping & SQLAlchemy to save job offers inside SQLite database just in case for further research of the companies.
