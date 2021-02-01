@@ -52,6 +52,9 @@ class JobPortal:
         soup = BeautifulSoup(r.content, "html.parser")
         return soup
 
+    def create_dict(self):
+        pass
+
     def insert_db(self):
         try:
             data = self.create_dict()
