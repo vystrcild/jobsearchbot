@@ -73,6 +73,7 @@ class Jobscz(JobPortal):
     def __init__(self):
         self.url = "https://www.jobs.cz/prace/brno/?q%5B%5D=python&date=7d&locality%5Bradius%5D=0"
         soup = JobPortal.fetch_data(self, self.url)
+        soup = self.fetch_data(self.url)
         self.results = soup.find_all("div", class_="standalone search-list__item")[1:]
 
     def create_dict(self):
@@ -121,7 +122,7 @@ class Startupjobs(JobPortal):
 class Juniorguru(JobPortal):
     def __init__(self):
         self.url = "https://junior.guru/jobs/"
-        soup = JobPortal.fetch_data(self, self.url)
+        soup = self.fetch_data(self.url)
         self.results = soup.find_all("li", class_="jobs__item")
 
     def create_dict(self):
@@ -141,7 +142,7 @@ class Juniorguru(JobPortal):
 class Jobsik(JobPortal):
     def __init__(self):
         self.url = "https://www.jobsik.cz/search/?category=Python&region=Brno"
-        soup = JobPortal.fetch_data(self, self.url)
+        soup = self.fetch_data(self.url)
         if soup.find("p", class_="alert alert-warning"):
             self.results = []
         else:
@@ -166,7 +167,7 @@ class Linkedin(JobPortal):
         self.url = "https://www.linkedin.com/jobs/search?keywords=Python&location=Brno%2C%20Jihomoravsk%C3%BD%2C%20" \
                    "%C4%8Cesko&geoId=101164731&trk=public_jobs_jobs-search-bar_search-submit&redirect=false&position" \
                    "=1&pageNum=0"
-        soup = JobPortal.fetch_data(self, self.url)
+        soup = self.fetch_data(self.url)
         self.results = soup.find_all("li", class_="result-card job-result-card result-card--with-hover-state")
 
     def create_dict(self):
@@ -194,7 +195,7 @@ class Linkedin(JobPortal):
 class Nofluffjobs(JobPortal):
     def __init__(self):
         self.url = "https://nofluffjobs.com/cz/jobs/brno/python"
-        soup = JobPortal.fetch_data(self, self.url)
+        soup = self.fetch_data(self.url)
         self.results = soup.find_all("a", class_="posting-list-item")
 
     def create_dict(self):
@@ -215,7 +216,7 @@ class Nofluffjobs(JobPortal):
 class Jobstack(JobPortal):
     def __init__(self):
         self.url = "https://www.jobstack.it/jobposts?positiontype=79&location=Brno&isDetail=0"
-        soup = JobPortal.fetch_data(self, self.url)
+        soup = self.fetch_data(self.url)
         self.results = soup.find_all("li", class_="jobposts-item")
 
     def create_dict(self):
@@ -237,7 +238,7 @@ class Jobstack(JobPortal):
 class Indeed(JobPortal):
     def __init__(self):
         self.url = "https://cz.indeed.com/jobs?q=Python&l=Brno&radius=0&sort=date"
-        soup = JobPortal.fetch_data(self, self.url)
+        soup = self.fetch_data(self.url)
         self.results = soup.find_all("div", class_="jobsearch-SerpJobCard")
 
     def create_dict(self):
