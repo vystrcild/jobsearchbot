@@ -80,18 +80,17 @@ class Jobscz(JobPortal):
         for result in self.results:
             job_position = {}
             if result.find("a", class_="search-list__main-info__title__link") is None:
-                pass
-            else:
-                job_position["portal"] = "jobs.cz"
-                job_position["portal_logo"] = "https://www.mimir.nu/wp-content/uploads/2016/09/logo-jobs-cz-200x200.png"
-                job_position["position_name"] = result.find("a",
-                                                            class_="search-list__main-info__title__link").get_text()
-                job_position["company_name"] = result.find("div",
-                                                           class_="search-list__main-info__company").get_text().strip()
-                job_position["link"] = result.find("a", class_="search-list__main-info__title__link")["href"]
-                job_position["location"] = result.find("div", class_="search-list__main-info__address") \
-                    .find_all("span")[1].get_text().strip()
-                job_positions.append(job_position)
+                continue
+            job_position["portal"] = "jobs.cz"
+            job_position["portal_logo"] = "https://www.mimir.nu/wp-content/uploads/2016/09/logo-jobs-cz-200x200.png"
+            job_position["position_name"] = result.find("a",
+                                                        class_="search-list__main-info__title__link").get_text()
+            job_position["company_name"] = result.find("div",
+                                                       class_="search-list__main-info__company").get_text().strip()
+            job_position["link"] = result.find("a", class_="search-list__main-info__title__link")["href"]
+            job_position["location"] = result.find("div", class_="search-list__main-info__address") \
+                .find_all("span")[1].get_text().strip()
+            job_positions.append(job_position)
         return job_positions
 
 
